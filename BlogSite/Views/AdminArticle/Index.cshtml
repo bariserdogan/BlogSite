@@ -1,0 +1,64 @@
+﻿@model IEnumerable<BlogSite.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_mainView.cshtml";
+}
+
+<h2>Makaleler</h2>
+
+<p>
+    @Html.ActionLink("Yeni Makale Oluştur", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Makale Adı
+        </th>
+        <th>
+            Makale Başlığı
+        </th>
+        <th>
+            Makale İçerik
+        </th>
+        <th>
+            Tarih
+        </th>
+        <th>
+            Makale Sahibi
+        </th>
+        <th>
+            Okunma Sayısı
+        </th>
+        <th>İşlemler</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.Category_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Article_Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Article_Content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Article_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemberID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reads_Count)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.Article_id }) |
+            @Html.ActionLink("Detay", "Details", new { id=item.Article_id }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.Article_id })
+        </td>
+    </tr>
+}
+
+</table>

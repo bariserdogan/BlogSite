@@ -1156,6 +1156,8 @@
     <Content Include="Views\Shared\_LayoutHome.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\CategoryPartial.cshtml" />
+    <Content Include="Views\AdminArticle\Index.cshtml" />
+    <Content Include="Views\AdminArticle\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

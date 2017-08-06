@@ -26,3 +26,4 @@ C:\Users\BARIS\documents\visual studio 2013\Projects\BlogSite\BlogSite\bin\Entit
 C:\Users\BARIS\documents\visual studio 2013\Projects\BlogSite\BlogSite\bin\EntityFramework.SqlServer.dll
 C:\Users\BARIS\documents\visual studio 2013\Projects\BlogSite\BlogSite\bin\EntityFramework.xml
 C:\Users\BARIS\documents\visual studio 2013\Projects\BlogSite\BlogSite\bin\EntityFramework.SqlServer.xml
+C:\Users\BARIS\documents\visual studio 2013\Projects\BlogSite\BlogSite\obj\Debug\BlogSite.csprojResolveAssemblyReference.cache

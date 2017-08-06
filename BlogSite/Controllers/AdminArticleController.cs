@@ -8,10 +8,11 @@ namespace BlogSite.Controllers
 {
     public class AdminArticleController : Controller
     {
+        BlogSite.Models.BlogSite db = new Models.BlogSite();
         // GET: AdminArticle
         public ActionResult Index()
         {
-            return View();
+            return View(db.Articles.ToList());
         }
 
         // GET: AdminArticle/Details/5
@@ -23,6 +24,7 @@ namespace BlogSite.Controllers
         // GET: AdminArticle/Create
         public ActionResult Create()
         {
+            ViewBag.CategoryId = new SelectList(db.Categories, "Category_id", "Category_Name");
             return View();
         }
 
