@@ -1,0 +1,43 @@
+﻿@model IEnumerable<BlogSite.Models.Category>
+@{
+    Layout = null;   
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Category_Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category_Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Category_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Category_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Category_id })
+        </td>
+    </tr>
+}
+
+</table>
+<h4>Categories</h4>
+<div class="row">
+    <div class="col-lg-6">
+        <ul class="list-unstyled">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <a href="#">@item.Category_Name</a>
+                </li>
+            }    
+        </ul>
+    </div>
+    <!-- /.col-lg-6 -->
+ </div>
