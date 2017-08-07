@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace BlogSite.Controllers
@@ -9,6 +11,7 @@ namespace BlogSite.Controllers
     public class AdminArticleController : Controller
     {
         BlogSite.Models.BlogSite db = new Models.BlogSite();
+
         // GET: AdminArticle
         public ActionResult Index()
         {
@@ -30,17 +33,41 @@ namespace BlogSite.Controllers
 
         // POST: AdminArticle/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(BlogSite.Models.Article model,string tags,HttpPostedFile photo)
         {
             try
             {
-                // TODO: Add insert logic here
+                if(photo!=null)
+                {
+                    WebImage image = new WebImage(photo.InputStream);
+                    FileInfo _photoinfo = new FileInfo(photo.FileName); // path bilgisi
+
+                    string newPhoto = Guid.NewGuid().ToString() + _photoinfo.Extension; // resmin uzantısını aldık
+                    image.Resize(800, 350); // resmi yeniden boyutlandırsın
+                    image.Save("~/Uploads/ArticlePhotos/" + newPhoto); // resimler için bir klasör oluştur ve ekle
+                    model.Article_Foto = "~/Uploads/ArticlePhotos/" + newPhoto;
+                    db.Articles.Add(model);
+                    
+                }
+                if(tags!=null)
+                {
+                    string[] tagsArray = tags.Split(',');
+                    foreach (var item in tagsArray)
+                    {
+                        var yenietiket = new BlogSite.Models.Tag { Tag_Name = item };
+                        db.Tags.Add(yenietiket);
+                        model.Tags.Add(yenietiket);
+                    }
+                }
+                db.SaveChanges();           
+
+                System.Threading.Thread.Sleep(2000);
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
 
@@ -87,5 +114,6 @@ namespace BlogSite.Controllers
                 return View();
             }
         }
+       
     }
 }

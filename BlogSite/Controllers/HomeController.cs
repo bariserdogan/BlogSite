@@ -23,21 +23,22 @@ namespace BlogSite.Controllers
         {
             return View();
         }
-        public ActionResult ArticleinCategories(int? id)
+        public ActionResult ArticleinCategories()
         {
-            var articles = from a in db.Articles
-                             join c in db.Categories on a.CategoryID equals c.Category_id
-                             select new
-                             {
-                                 a.Article_Content,
-                                 a.Article_Date,
-                                 a.Article_Foto,
-                                 a.Article_Title,
-                                 c.Category_Name
-                             };
-            if (articles == null)
-                return HttpNotFound();                                    
-            return View(articles);
+            //var articles = from a in db.Articles
+            //                 join c in db.Categories on a.CategoryID equals c.Category_id
+            //                 select new
+            //                 {
+            //                     a.Article_Content,
+            //                     a.Article_Date,
+            //                     a.Article_Foto,
+            //                     a.Article_Title,
+            //                     c.Category_Name
+            //                 };
+            //if (articles == null)
+            //    return HttpNotFound();                                    
+            //return View(articles);
+            return View();
         }
         public ActionResult CategoryPartial()
         {
